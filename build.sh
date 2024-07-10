@@ -51,7 +51,10 @@ case ${TARGET} in
 *-linux*)
 	OS=linux
 	export HOST_CFLAGS="-fcommon"
-	EXTRA_CFLAGS+=" -fcommon"
+	EXTRA_CFLAGS="${EXTRA_CFLAGS} -fcommon"
+	if [ ${TARGET} = "aarch64-linux-gnu" ] ; then
+	    EXTRA_CFLAGS="${EXTRA_CFLAGS} -mno-outline-atomics"
+	fi
 	;;
 *-netbsd*)
 	OS=netbsd
