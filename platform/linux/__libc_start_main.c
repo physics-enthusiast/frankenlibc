@@ -12,7 +12,7 @@ int __franken_start_main(int (*)(int,char **,char **), int, char **, char **);
 
 int __libc_start_main(int (*)(int,char **,char **), int, char **);
 
-#define AUX_CNT 38
+#define AUX_CNT 64
 
 size_t *__auxv;
 size_t __hwcap;
@@ -50,7 +50,7 @@ __libc_start_main(int (*main)(int,char **,char **), int argc, char **argv)
 	__pagesize = aux[AT_PAGESZ];
 	__random = (uint8_t *)aux[AT_RANDOM];
 
-#define AT_PARENT_SYSCALL	27
+#define AT_PARENT_SYSCALL	52
 	/* This is forked (child) process */
 	if (aux[AT_PARENT_SYSCALL]) {
 		extern long (*lkl_parent_syscall)(long no, long *params);
