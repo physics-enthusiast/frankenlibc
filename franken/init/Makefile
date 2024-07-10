@@ -8,7 +8,7 @@ OBJ+=$(OBJDIR)/darwin_cdtors.o
 RUMP?=$(RUMPOBJ)/rump
 INCLUDES=-I../include -I../../platform/include -I. -I$(RUMP)/include -I$(RUMP)/usr/include
 CPPFLAGS+=-nostdinc $(INCLUDES)
-CFLAGS+=-fno-stack-protector
+CFLAGS+=-fno-stack-protector -Wno-error=maybe-uninitialized
 DEPS=init.h
 
 default:			$(OBJ)

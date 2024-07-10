@@ -15,8 +15,8 @@ int __libc_start_main(int (*)(int,char **,char **), int, char **);
 #define AUX_CNT 64
 
 size_t *__auxv;
-size_t __hwcap;
-size_t __sysinfo;
+static size_t __hwcap;
+static size_t __sysinfo;
 size_t __pagesize;
 uint8_t *__random;
 
