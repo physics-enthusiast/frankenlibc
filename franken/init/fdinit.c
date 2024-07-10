@@ -309,7 +309,7 @@ unmount_atexit(void)
 static int
 register_reg(int dev, int fd, int flags)
 {
-	char key[16], num[16];
+	char key[16], num[16] = { 0 };
 #ifdef MUSL_LIBC
 	if ((__franken_fd[fd].st.st_mode & S_IFMT) == S_IFREG)
 		return fd;
