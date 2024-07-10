@@ -76,12 +76,6 @@ jobs:
           path: src/frankenlibc
           submodules: true
 
-      - name: Install LLVM and Clang
-        if: runner.os == 'linux' && matrix.arch == 'amd64'
-        uses: KyleMayes/install-llvm-action@v1
-        with:
-          version: "10.0"
-
       - name: Set env
         shell: bash
         run: |
