@@ -31,28 +31,28 @@ jobs:
           - displayTargetName: linux-amd64
             os: linux
             alias: linux
-            runs_on: ubuntu-18.04
+            runs_on: ubuntu-24.04
             arch: amd64
             cc: clang
             cxx: clang++
           - displayTargetName: linux-arm32
             os: linux
             alias: linux
-            runs_on: ubuntu-18.04
+            runs_on: ubuntu-24.04
             arch: arm32
             cc: arm-linux-gnueabihf-gcc
             cxx: g++
           - displayTargetName: linux-arm64
             os: linux
             alias: linux
-            runs_on: ubuntu-18.04
+            runs_on: ubuntu-24.04
             arch: arm64
             cc: aarch64-linux-gnu-gcc
             cxx: g++
           - displayTargetName: macOS-amd64
             os: macos
             alias: osx
-            runs_on: macos-11
+            runs_on: macos-12
             arch: amd64
             cc: clang
             cxx: clang++
