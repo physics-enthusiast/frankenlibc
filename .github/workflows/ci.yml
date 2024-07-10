@@ -96,7 +96,7 @@ jobs:
 
       - name: pkg dependency
         run: |
-          pip install yamlish
+          pip install yamlish --break-system-packages
 
       - name: pkg dependency (linux-amd64)
         if: runner.os == 'linux' && matrix.arch == 'amd64'
