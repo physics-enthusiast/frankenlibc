@@ -41,6 +41,9 @@ EXTRA_CFLAGS="-fPIC"
 if [ -n "$(${CC-cc} -v 2>&1 | grep "enable-default-pie")" ]; then
   LDFLAGS_NO_PIE="-no-pie"
 fi
+if [ -n "$(${CC} -v 2>&1 | grep "clang")" ]; then
+  LDFLAGS_NO_PIE="-no-pie"
+fi
 
 TARGET=$(LC_ALL=C ${CC-cc} -v 2>&1 | sed -n 's/^Target: //p' )
 

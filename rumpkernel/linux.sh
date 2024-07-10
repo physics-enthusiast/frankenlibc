@@ -87,7 +87,8 @@ rumpkernel_install_header()
 # static c++ binary needs __dso_handle (used by atexit of deconstructor),
 # defined by gnu library
 if [ "${OS}" = "linux" ] ; then
-    export EXTRA_LDSCRIPT_CC="-Wl,-defsym,__dso_handle=0 -Wl,-defsym,__cxa_thread_atexit_impl=0"
+    export EXTRA_LDSCRIPT_CC="-Wl,-defsym,__dso_handle=0 -Wl,-defsym,__cxa_thread_atexit_impl=0 \
+     -Wl,-defsym,_dl_find_object=0"
 fi
 if [ "${OS}" = "darwin" ] ; then
     export EXTRA_LDSCRIPT_CC="-Wl,-alias,_rumpns__stext,___eh_frame_start \
