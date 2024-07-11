@@ -138,6 +138,12 @@ jobs:
           sudo mkdir -p /opt/rump && sudo chown -R $USER /opt/
           ./build.sh -j4 -d /opt/rump -q -k linux notest
 
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+
       - name: run tests
         if: matrix.arch != 'arm32' && matrix.arch != 'arm64'
         run: |
