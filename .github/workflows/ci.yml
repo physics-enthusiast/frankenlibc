@@ -71,7 +71,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: src/frankenlibc
           submodules: true
@@ -82,7 +82,7 @@ jobs:
           echo "/usr/lib/ccache/bin:/usr/lib/ccache:/usr/local/opt/ccache/libexec:$HOME/.local/bin:${{ github.workspace }}/bin" >> $GITHUB_PATH
           echo "export PATH=/usr/lib/ccache/bin:/usr/lib/ccache:/usr/local/opt/ccache/libexec:$HOME/.local/bin:${{ github.workspace }}/bin:$PATH" >> $HOME/.bashrc
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ${{ runner.os }}-${{ matrix.arch }}-ccache-build-${{ github.sha }}
@@ -192,7 +192,7 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
 
       - name: Annotate
-        uses: yuzutech/annotations-action@v0.3.0
+        uses: yuzutech/annotations-action@v0.5.0
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           input: "${{env.working-directory}}/annotations.json"
