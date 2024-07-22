@@ -31,21 +31,21 @@ jobs:
           - displayTargetName: linux-amd64
             os: linux
             alias: linux
-            runs_on: ubuntu-22.04
+            runs_on: ubuntu-20.04
             arch: amd64
             cc: clang
             cxx: clang++
           - displayTargetName: linux-arm32
             os: linux
             alias: linux
-            runs_on: ubuntu-22.04
+            runs_on: ubuntu-20.04
             arch: arm32
             cc: arm-linux-gnueabihf-gcc
             cxx: g++
           - displayTargetName: linux-arm64
             os: linux
             alias: linux
-            runs_on: ubuntu-22.04
+            runs_on: ubuntu-20.04
             arch: arm64
             cc: aarch64-linux-gnu-gcc
             cxx: g++
