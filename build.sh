@@ -713,29 +713,28 @@ rumpkernel_install_libcxx
 write_log " done"
 fi
 
-write_log "-n" "building tests.."
-
-# Always make tests to exercise compiler
-CC="${BINDIR}/${COMPILER}" \
-	CXX="${BINDIR}/${COMPILER}++" \
-	RUMPDIR="${OUTDIR}" \
-	RUMPOBJ="${RUMPOBJ}" \
-	BINDIR="${BINDIR}" \
-	${MAKE} ${STDJ} -C tests
-
-# test for executable stack
-if [ ${OS} != "darwin" ]
-then
-readelf -lW ${RUMPOBJ}/tests/hello | grep RWE 1>&2 && echo "WARNING: writeable executable section (stack?) found" 1>&2
-fi
-
-rumpkernel_build_test
-
-write_log " done"
-write_log "-n" "running tests.."
-
 if [ ${RUNTESTS} = "test" ]
 then
+        write_log "-n" "building tests.."
+
+        CC="${BINDIR}/${COMPILER}" \
+	        CXX="${BINDIR}/${COMPILER}++" \
+	        RUMPDIR="${OUTDIR}" \
+	        RUMPOBJ="${RUMPOBJ}" \
+	        BINDIR="${BINDIR}" \
+	        ${MAKE} ${STDJ} -C tests
+
+        # test for executable stack
+        if [ ${OS} != "darwin" ]
+        then
+        readelf -lW ${RUMPOBJ}/tests/hello | grep RWE 1>&2 && echo "WARNING: writeable executable section (stack?) found" 1>&2
+        fi
+
+        rumpkernel_build_test
+
+        write_log " done"
+        write_log "-n" "running tests.."
+
 	CC="${BINDIR}/${COMPILER}" \
 		CXX="${BINDIR}/${COMPILER}++" \
 		RUMPDIR="${OUTDIR}" \
